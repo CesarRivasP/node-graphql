@@ -1,15 +1,17 @@
 type Course {
   "tipo ID es un escalar que permite utilizar identificadores de tipo string"
-  _id: ID 
-  title: String
+  _id: ID!
+  title: String!
   teacher: String
-  description: String
+  description: String!
   topic: String
 }
 
 
+
 type Query { 
-  "query para consultar los cursos"
-  "debe devolver un array que contenga informacion semejante a la del tipo course"
-  getCourses: [Course] 
+  "query para consultar los cursos, debe devolver un array que contenga informacion semejante a la del tipo course"
+  getCourses: [Course]
+  "Devuelve un curso"
+  getCourse(id: ID!): Course
 }
