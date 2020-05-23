@@ -8,7 +8,8 @@ type Course {
 }
 
 
-type Query {
+type Query { 
+  "query para consultar los cursos"
   "debe devolver un array que contenga informacion semejante a la del tipo course"
   getCourses: [Course] 
 }
