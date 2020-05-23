@@ -12,26 +12,12 @@ const app = express()
 const port = process.env.port || 3000
 
 /* Definiendo el esquema: define la api en graphql */
-const schema = buildSchema(
+const schema = buildSchema( // leer el schema
   readFileSync(
     join(__dirname, 'lib', 'schema.graphql'),
     'utf-8'
   )
 )
-
-/* Configurar los resolvers */
-/* const resolvers = {
-  hello: () => {
-    return 'Hello world'
-  },
-  salute: () => 'Hello everyone'
-} */
-
-/* Ejecutar query hello */
-/* graphql(schema, `{ hello salute }`, resolvers)
-  .then((data) => {
-    console.log(data);
-  }); */
 
 app.use('/api', gqlMiddleware({
   schema: schema,
