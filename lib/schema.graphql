@@ -7,11 +7,27 @@ type Course {
   topic: String
 }
 
-
+type Student {
+  _id: ID!
+  name: String
+  email: String
+}
 
 type Query { 
   "query para consultar los cursos, debe devolver un array que contenga informacion semejante a la del tipo course"
   getCourses: [Course]
   "Devuelve un curso"
   getCourse(id: ID!): Course
+}
+
+input CourseInput {
+  title: String!
+  teacher: String
+  description: String!
+  topic: String
+}
+
+type Mutation {
+  "se definen las operaciones que van a permitir almacenar informacion. Los imputs son plantillas que nos permiten saber que campos son necesarios para poder insertar informacion"
+  createCourse(input: CourseInput!): Course
 }
