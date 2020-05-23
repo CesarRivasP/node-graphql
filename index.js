@@ -1,5 +1,6 @@
 'use strict'
 
+require('dotenv').config()
 const { 
   /* buildSchema */ 
   makeExecutableSchema  // semejante a buildSchema, pero realiza las tareas de una manera mas especializada
