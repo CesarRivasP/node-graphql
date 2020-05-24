@@ -9,7 +9,7 @@ type Course {
 
 type Student {
   _id: ID!
-  name: String
+  name: String!
   email: String
 }
 
@@ -18,6 +18,10 @@ type Query {
   getCourses: [Course]
   "Devuelve un curso"
   getCourse(id: ID!): Course
+  "Devuelve todos los estudiantes"
+  getStudents: [Student]
+  "Devuelve un estudiante"
+  getStudent(id: ID!): Student
 }
 
 input CourseInput {
@@ -27,7 +31,30 @@ input CourseInput {
   topic: String
 }
 
+input CourseEditInput {
+  title: String!
+  teacher: String
+  description: String!
+  topic: String
+}
+
+input StudentInput {
+  name: String!
+  email: String!
+}
+
+input StudentEditInput {
+  name: String
+  email: String
+}
+
 type Mutation {
   "se definen las operaciones que van a permitir almacenar informacion. Los imputs son plantillas que nos permiten saber que campos son necesarios para poder insertar informacion"
   createCourse(input: CourseInput!): Course
+  "Edit one course"
+  editCourse(_id: ID!, input: CourseEditInput!): Course
+  "Create one student"
+  createStudent(input: StudentInput!): Student
+  "Create one student"
+  editStudent(_id: ID!, input: StudentEditInput!): Student
 }
