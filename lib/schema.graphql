@@ -5,12 +5,13 @@ type Course {
   teacher: String
   description: String!
   topic: String
+  people: [Student]
 }
 
 type Student {
   _id: ID!
   name: String!
-  email: String
+  email: String!
 }
 
 type Query { 
@@ -57,4 +58,10 @@ type Mutation {
   createStudent(input: StudentInput!): Student
   "Create one student"
   editStudent(_id: ID!, input: StudentEditInput!): Student
+  "Agrega una persona a un curso"
+  addPeople(courseID: ID!, personID: ID!): Course
+  "Elimina un curso"
+  deleteCourse(_id: ID!): Boolean
+  "Eliminar un estudiante"
+  deleteStudent(_id: ID!): Boolean
 }
