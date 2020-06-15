@@ -1,0 +1,51 @@
+/* ALIAS */
+
+{
+  AllCourses: getCourses {
+    _id
+    title
+  }
+  
+  Course1: getCourse(id: "5ed3fed470e9214c5f5c4e15") {
+    _id
+    title
+    description
+  }
+  
+  Course2: getCourse(id: "5ed3fed470e9214c5f5c4e15") {
+    title
+    description
+    topic
+  }
+}
+//Graphql en una sola operacion se pueden requerir todas las consultas que se deseen, con los campos que se quieran.
+
+
+/* FRAGMENTS */
+Crear un fragmento que se pueda reutilizar en las consultas
+
+{
+  AllCourses: getCourses {
+    ...CourseFields
+  }
+  
+  Course1: getCourse(id: "5ed3fed470e9214c5f5c4e15") {
+    ...CourseFields
+    teacher
+  }
+  
+  Course2: getCourse(id: "5ed3fed470e9214c5f5c4e15") {
+    ...CourseFields
+    topic
+  }
+}
+
+fragment CourseFields on Course {
+  _id 
+  title
+  description
+  people {
+    _id
+    name
+  }
+}
